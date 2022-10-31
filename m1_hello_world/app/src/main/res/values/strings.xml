@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">App-counter</string>
+    <string name="text1">Все места свободны</string>
+    <string name="text2">Осталось мест: </string>
+    <string name="text3">Пассажиров слишком много!</string>
+    <string name="sb">Сброс</string>
+</resources>
