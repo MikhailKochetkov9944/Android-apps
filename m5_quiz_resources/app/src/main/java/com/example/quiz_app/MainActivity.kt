@@ -1,12 +1,13 @@
-package com.example.skillbox_hw_quiz
+package com.example.quiz_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.skillbox_hw_quiz.ui.main.MainFragment
+import com.example.quiz_app.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Quiz_app)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {

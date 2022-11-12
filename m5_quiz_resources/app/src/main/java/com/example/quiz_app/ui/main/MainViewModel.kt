@@ -1,4 +1,4 @@
-package com.example.skillbox_hw_quiz.ui.main
+package com.example.quiz_app.ui.main
 
 import androidx.lifecycle.ViewModel
 

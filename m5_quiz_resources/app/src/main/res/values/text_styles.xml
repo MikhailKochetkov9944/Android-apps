@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textStyle1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/opensans_bold</item>
+    </style>
+</resources>

@@ -1,4 +1,4 @@
-package com.example.skillbox_hw_quiz
+package com.example.quiz_app
 
 import org.junit.Test
 
