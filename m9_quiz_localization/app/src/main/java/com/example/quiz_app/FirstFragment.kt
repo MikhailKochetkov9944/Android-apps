@@ -23,7 +23,7 @@ class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     val calendar = Calendar.getInstance()
-    val dateFormat = SimpleDateFormat("dd-MM-yy")
+    val dateFormat = SimpleDateFormat("dd.MM.yy")
 
     // This property is only valid between onCreateView and
     // onDestroyView.
