@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Quiz_app</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="result">Survey result:</string>
+    <string name="text1">Welcome, dear friend! To start the test, click the "Start" button</string>
+    <string name="textStart">Start</string>
+    <string name="answer">Send</string>
+    <string name="startAgain">Start over</string>
+    <string name="textBack">Back</string>
+    <string name="dateOfBirth">Date of birth user</string>
+    <string name="date_dialog_title">Selecting a user\'s date of birth</string>
+</resources>
