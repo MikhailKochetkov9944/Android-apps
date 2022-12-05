@@ -39,9 +39,13 @@ class MainActivity : AppCompatActivity() {
                 Log.d("DTCR", "progressBarCircular(save) = ${binding.progressBarCircular.progress}")
                 binding.buttonStart.text = getCharSequence("buttonStartText")
             }
-            //job?.start()
-            //jobSecond?.start()
-
+            Log.d("NEW_DATA", "read isActiveTimer=$isActiveTimer")
+            if(isActiveTimer) {
+                job = scope.launch {
+                    Log.d("DTCR", "Create new job")
+                    timerStart()
+                }
+            }
         }
         setDefault()
         binding.slider.addOnChangeListener { _, _, _ ->
@@ -49,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             currentProgress = binding.slider.value.toInt()
             }
             binding.progressBarCircular.max = binding.slider.value.toInt()
-            //binding.progressBarCircular.progress = currentProgress
+            binding.progressBarCircular.progress = currentProgress
             binding.textCount.text = currentProgress.toString()
             binding.buttonStart.isEnabled = currentProgress > 0
         }
@@ -69,28 +73,28 @@ class MainActivity : AppCompatActivity() {
                         binding.progressBarCircular.progress = currentProgress
                         isActiveTimer = false
                         binding.buttonStart.setText(R.string.start)
-                        Toast.makeText(applicationContext, "Timer finished!1", Toast.LENGTH_SHORT)
+                        Toast.makeText(applicationContext, "Timer finished!", Toast.LENGTH_SHORT)
                             .show()
                         job?.cancel()
                     }
-//                    jobSecond = scope.launch {
-//
-//                            Log.d(TAG,
-//                                    "scope - ${CoroutineScope(Dispatchers.Main).isActive}")
-//                            if(!isActiveTimer) {
-//                                job?.cancel()
-//                                updateView(currentProgress)
-//                            } else {
-//                                job?.start()
-//                            }
-//                    }
+                    scope.launch {
+
+                            Log.d(TAG,
+                                    "scope - ${CoroutineScope(Dispatchers.Main).isActive}")
+                            if(!isActiveTimer) {
+                                job?.cancel()
+                                updateView(currentProgress)
+                            } else {
+                                job?.start()
+                            }
+                    }
                 } else {
                     currentProgress = 0
                     setDefault()
                     binding.buttonStart.setText(R.string.start)
                     isActiveTimer = false
                     binding.slider.isEnabled = true
-                    Toast.makeText(applicationContext, "Timer finished!2", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Timer finished!", Toast.LENGTH_SHORT).show()
                     job?.cancel()
                 }
         }
@@ -99,9 +103,6 @@ class MainActivity : AppCompatActivity() {
         while(currentProgress > 0) {
             currentProgress--
             Log.d("DTCR", "currentProgress = $currentProgress")
-//            binding.textCount.text = currentProgress.toString()
-//            Log.d("DTCR", "textCount = ${binding.textCount.text}")
-//            binding.progressBarCircular.progress = currentProgress
             updateView(currentProgress)
             delay(1000)
 
@@ -127,9 +128,9 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         //outState.run {
             outState.putInt("progress", currentProgress)
+            Log.d("NEW_DATA", "save isActiveTimer=$isActiveTimer")
             outState.putBoolean("activeTimer", isActiveTimer)
             outState.putBoolean("sliderIsEn", binding.slider.isEnabled)
-            //putFloat("sliderValue", binding.slider.value)
             outState.putCharSequence("text", binding.textCount.text)
             outState.putInt("progressBar", binding.progressBarCircular.progress)
             outState.putCharSequence("buttonStartText", binding.buttonStart.text)
@@ -140,8 +141,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        //job?.cancel()
-        //jobSecond?.cancel()
+        job?.cancel()
         super.onDestroy()
     }
 }
