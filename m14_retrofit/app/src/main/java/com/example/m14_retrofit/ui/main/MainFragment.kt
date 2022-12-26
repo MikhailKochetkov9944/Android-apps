@@ -61,7 +61,7 @@ class MainFragment : Fragment() {
                         val user = response?.body() ?: return
                         textView.text = user.results.toString()
 //                        Glide.with(imageView.context)
-//                            .load(user)
+//                            .load(user.results)
 //                            .into(imageView)
                     }
                 }
