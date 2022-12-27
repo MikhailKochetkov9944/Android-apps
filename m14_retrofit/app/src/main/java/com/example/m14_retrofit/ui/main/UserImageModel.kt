@@ -15,8 +15,9 @@ data class Result(
 )
 @JsonClass(generateAdapter = true)
 data class Name(
-    @Json(name = "first") val firstName: String,
-    @Json(name = "last") val lastName: String
+    @Json(name = "title") val title: String,
+    @Json(name = "first") val first: String,
+    @Json(name = "last") val last: String
 )
 @JsonClass(generateAdapter = true)
 data class Picture(
