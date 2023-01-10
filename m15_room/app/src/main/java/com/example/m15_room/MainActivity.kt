@@ -12,6 +12,7 @@ import com.example.m15_room.databinding.ActivityMainBinding
 import com.example.m15_room.ui.main.App
 import com.example.m15_room.ui.main.MainFragment
 import com.example.m15_room.ui.main.MainViewModel
+import kotlinx.coroutines.flow.collect
 
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels{
@@ -42,14 +43,18 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        binding.deleteBtn.setOnClickListener {
+            viewModel.onDeleteBtn()
+        }
 
         lifecycleScope.launchWhenCreated {
             viewModel.allWords
                 .collect { words ->
-                    binding.textView.text = words.joinToString(
+                    binding.textView.text = words
+                        .joinToString(
                         separator = "\r\n"
                     )
-                    Log.d("DTCR", "onCreate: view ${binding.textView.text}")
+                    Log.d("DTCR", "onCreate: view ${viewModel.allWords.value}")
                 }
         }
 

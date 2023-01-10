@@ -20,8 +20,8 @@ class MainViewModel(private val wordDao: WordDao) : ViewModel() {
         viewModelScope.launch {
             wordDao.insert(
                 Word(
-                    word = text,
-                    count = 5
+                    word = "$text",
+                    count = 0
                 )
             )
             Log.d("DTCR", "onCreate: addWord")
@@ -30,6 +30,11 @@ class MainViewModel(private val wordDao: WordDao) : ViewModel() {
     fun onUpdateBtn(word: String) {
         viewModelScope.launch {
             wordDao.update(word)
+        }
+    }
+    fun onDeleteBtn() {
+        viewModelScope.launch {
+            wordDao.delete()
         }
     }
 
