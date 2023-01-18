@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface WordDao {
     @Transaction
-    @Query("SELECT * FROM wordTable")
+    @Query("SELECT * FROM wordTable LIMIT 5")
     fun getWords(): Flow<List<Word>>
 
     @Insert(entity = Word::class, onConflict = IGNORE)
